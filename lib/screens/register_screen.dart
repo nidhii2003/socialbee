@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:socialbee/screens/login_screen.dart';
+import 'package:socialbee/screens/verify_email.dart';
 
 class RegScreen extends StatefulWidget {
   const RegScreen({Key? key}) : super(key: key);
@@ -214,13 +214,13 @@ class _RegScreenState extends State<RegScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const LoginScreen(),
+                                builder: (context) => const VerifyEmailScreen(),
                               ),
                             );
                           } else {
                             // If the form is not valid, show error message
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Please fix errors')),
+                              const SnackBar(content: Text('Wrong User Inputs! Try Again!')),
                             );
                           }
                         },
