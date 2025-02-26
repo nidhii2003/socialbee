@@ -23,16 +23,25 @@ class _RegScreenState extends State<RegScreen> {
   String? _passwordError;
   String? _confirmPasswordError;
 
-  // Function to validate email
+  // Function to validate phone number with "+91" followed by 10 digits
   String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Please enter your email';
+      return 'Please enter your phone number or email';
     }
+    final phoneRegex = RegExp(r"^\+91\d{10}$");
     final emailRegex = RegExp(r"^[a-zA-Z0-9._%+-]+@(ves\.ac\.in|gmail\.com)$");
-    if (!emailRegex.hasMatch(value)) {
-      return 'Please enter a valid email address with @ves.ac.in or @gmail.com';
+
+    // If input starts with +91 and has exactly 10 digits
+    if (phoneRegex.hasMatch(value)) {
+      return null;
     }
-    return null;
+
+    // If input matches the email pattern
+    if (emailRegex.hasMatch(value)) {
+      return null;
+    }
+
+    return 'Please enter +91 before your phone number';
   }
 
   // Function to validate password
@@ -146,7 +155,7 @@ class _RegScreenState extends State<RegScreen> {
                       ),
                       const SizedBox(height: 10),
 
-                      // Email input field with validation
+                      // Phone or Email input field with validation
                       TextFormField(
                         controller: _emailController,
                         decoration: InputDecoration(
@@ -240,7 +249,7 @@ class _RegScreenState extends State<RegScreen> {
                             );
                           } else {
                             // If the form is not valid, show error dialog
-                            _showErrorDialog('Wrong Credentials please, Try Again!');
+                            _showErrorDialog('Wrong User Inputs! Try Again!');
                           }
                         },
                         child: Container(
