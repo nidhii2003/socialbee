@@ -62,6 +62,27 @@ class _RegScreenState extends State<RegScreen> {
     return null;
   }
 
+  // Function to show error dialog
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Invalid Input'),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -218,10 +239,8 @@ class _RegScreenState extends State<RegScreen> {
                               ),
                             );
                           } else {
-                            // If the form is not valid, show error message
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Wrong User Inputs! Try Again!')),
-                            );
+                            // If the form is not valid, show error dialog
+                            _showErrorDialog('Wrong Credentials please, Try Again!');
                           }
                         },
                         child: Container(
