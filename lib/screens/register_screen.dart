@@ -28,9 +28,9 @@ class _RegScreenState extends State<RegScreen> {
     if (value == null || value.isEmpty) {
       return 'Please enter your email';
     }
-    final emailRegex = RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
+    final emailRegex = RegExp(r"^[a-zA-Z0-9._%+-]+@(ves\.ac\.in|gmail\.com)$");
     if (!emailRegex.hasMatch(value)) {
-      return 'Please enter a valid email address';
+      return 'Please enter a valid email address with @ves.ac.in or @gmail.com';
     }
     return null;
   }
