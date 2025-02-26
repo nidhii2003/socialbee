@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:socialbee/screens/verify_email.dart';
+import 'package:socialbee/screens/phone_verification.dart'; // Import phone verification screen
 
 class RegScreen extends StatefulWidget {
   const RegScreen({Key? key}) : super(key: key);
@@ -17,11 +18,6 @@ class _RegScreenState extends State<RegScreen> {
 
   bool _isPasswordVisible = false;
   bool _isConfirmPasswordVisible = false;
-
-  String? _nameError;
-  String? _emailError;
-  String? _passwordError;
-  String? _confirmPasswordError;
 
   // Function to validate phone number with "+91" followed by 10 digits
   String? _validateEmail(String? value) {
@@ -41,7 +37,7 @@ class _RegScreenState extends State<RegScreen> {
       return null;
     }
 
-    return 'Please enter +91 before your phone number';
+    return 'Please enter a valid phone number (+91 followed by 10 digits) or a valid email address';
   }
 
   // Function to validate password
@@ -236,17 +232,31 @@ class _RegScreenState extends State<RegScreen> {
                       GestureDetector(
                         onTap: () {
                           if (_formKey.currentState?.validate() ?? false) {
-                            // Form is valid, proceed with registration
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Signing up...')),
-                            );
-                            // Navigate to next screen, or save user data
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const VerifyEmailScreen(),
-                              ),
-                            );
+                            // Form is valid, check if phone or email is entered
+                            String enteredValue = _emailController.text.trim();
+
+                            // If phone number is entered, go to phone verification
+                            if (RegExp(r"^\+91\d{10}$").hasMatch(enteredValue)) {
+                              // Navigate to phone verification screen
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const VerifyPhoneScreen(),
+                                ),
+                              );
+                            }
+                            // If email is entered, go to email verification
+                            else if (RegExp(r"^[a-zA-Z0-9._%+-]+@(ves\.ac\.in|gmail\.com)$")
+                                .hasMatch(enteredValue)) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const VerifyEmailScreen(),
+                                ),
+                              );
+                            } else {
+                              _showErrorDialog('Invalid phone number or email!');
+                            }
                           } else {
                             // If the form is not valid, show error dialog
                             _showErrorDialog('Wrong User Inputs! Try Again!');
