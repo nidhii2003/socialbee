@@ -3,10 +3,10 @@ class Validator {
     if (value == null || value.isEmpty) {
       return 'Please enter your email';
     }
-    // Regex for validating email format
-    final emailRegex = RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
+    // Regex for validating email with specific domains
+    final emailRegex = RegExp(r"^[a-zA-Z0-9._%+-]+@(ves\.ac\.in|gmail\.com)$");
     if (!emailRegex.hasMatch(value)) {
-      return 'Please enter a valid email address';
+      return 'Please enter a valid email either @ves.ac.in or @gmail.com';
     }
     return null;
   }
@@ -28,12 +28,11 @@ class Validator {
     return null;
   }
 
-
   static String? validateName(String? value) {
-    if(value == null || value.isEmpty) {
+    if (value == null || value.isEmpty) {
       return 'Please enter a valid name';
     }
-    if(value.length < 2){
+    if (value.length < 2) {
       return 'Name must be at least 2 characters long';
     }
     return null;
