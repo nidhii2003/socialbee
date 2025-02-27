@@ -34,6 +34,27 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
+  // Function to show a pop-up dialog when there are form errors
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Wrong Input'),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -203,10 +224,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             );
                           } else {
-                            // If the form is not valid, show error message
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Please fix errors')),
-                            );
+                            // If the form is not valid, show error dialog
+                            _showErrorDialog('Enter valid credentials!');
                           }
                         },
                         child: Container(
