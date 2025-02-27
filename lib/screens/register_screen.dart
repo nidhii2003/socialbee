@@ -37,7 +37,7 @@ class _RegScreenState extends State<RegScreen> {
       return null;
     }
 
-    return 'Please enter a valid phone number (+91 followed by 10 digits) or a valid email address';
+    return 'Please enter a valid phone number or a valid email address';
   }
 
   // Function to validate password
