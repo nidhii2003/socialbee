@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Post Home Screen'),
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: AppColors.secondaryColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -159,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: AppColors.primaryColor,
+                color: AppColors.secondaryColor,
                 borderRadius: BorderRadius.circular(30),
               ),
               child: Row(
