@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "882038735426",
+    "project_id": "socialbee-cb4e5",
+    "storage_bucket": "socialbee-cb4e5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882038735426:android:5ab79bdc4f2c5bebada3db",
+        "android_client_info": {
+          "package_name": "com.example.socialbee"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApIIkHb4QF-gLMb2doNgzTP-lKQwVeFw4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882038735426:android:944800a23afead67ada3db",
+        "android_client_info": {
+          "package_name": "com.example.socialbeess"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApIIkHb4QF-gLMb2doNgzTP-lKQwVeFw4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
